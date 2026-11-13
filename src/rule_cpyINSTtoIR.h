@@ -8,7 +8,7 @@
     the argument of instruction into memory address register MAR
     The instruction is stored in the high nibble of the opcode, 
     the argument in the low nibble.
-    Entry conditions: Nothing is marked
+    Entry conditions: None
     Entry point     : NP pointer position P3 of Program Counter PC
     Exit conditions : IR contains the current instruction, the argument is stored in MAR
     Exit point      : NP pointer position I3 of Instruction Registers IR
@@ -74,5 +74,4 @@ void CopyINSTtoIR(uint16_t rule){
     SetRule(rule, '0', '0', LEFT, rule -2);
     SetRule(rule, '1', '1', LEFT, rule -2);
     rule++;
-
 }

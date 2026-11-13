@@ -18,7 +18,7 @@ const char SAP1_REGISTERS[] = (
 
     // The PC is preloaded with te value 3. Program starts at address 0x3
     // ZC A/B              PC       IR   MAR
-    "$$10$0000000000000000$00001011$0000$0000$"
+    "$$10$0000000000000000$00000001$0000$0000$"
 );
 
 uint16_t notePad[NOTEPADSIZE];
@@ -28,24 +28,24 @@ uint16_t notePad[NOTEPADSIZE];
 //           0x01, 0x02, 0x03, 0x05, 0x08, 0x0D, 0x15, 0x22, 0x37, 0x59, 0x90, 0xE9
 uint8_t Program[16] = {
                     // Fibonacci
-                    // .org 0x3
-	0x00,
-	0x00,
-	0x00,
-	0x51,			//	LDI 0x1     // 51
-	0x41,			//	STA [0x1]
+	0x51,			//	LDI 0x1
+	0x4E,			//	STA [0xE]
 	0x50,			//	LDI 0x0
-	0x21,			//	ADD [0x1]
-	0x73,			//	JC 0x3
+	0x2E,			//	ADD [0xE]
+	0x70,			//	JC 0x0
 	0xE0,			//	OUT
-	0x42,			//	STA [0x2]
-	0x11,			//	LDA [0x1]
-	0x40,			//	STA [0x0]
-	0x12,			//	LDA [0x2]
-	0x41,			//	STA [0x1]
-	0x10,			//	LDA [0x0]
-	0x66 			//	JMP 0x6
+	0x4F,			//	STA [0xF]
+	0x1E,			//	LDA [0xE]
+	0x4D,			//	STA [0xD]
+	0x1F,			//	LDA [0xF]
+	0x4E,			//	STA [0xE]
+	0x1D,			//	LDA [0xD]
+	0x63,			//	JMP 0x3
+	0x00,
+	0x00,
+	0x00
 };
+
 
 // uint8_t Program[16] = {
 //                     // Sub [0x1] - [0x2]
@@ -103,9 +103,11 @@ void AddressOut(uint8_t address){
         digitalWrite(ADDRCLK, LOW);
     }
 
+    digitalWrite(D1, HIGH);
     digitalWrite(ADDR_OUTCLK, HIGH);
     delayMicroseconds(50);
     digitalWrite(ADDR_OUTCLK, LOW);
+    digitalWrite(D1, LOW);
 }
 
 void DataOut(uint8_t data){

@@ -274,13 +274,11 @@ uint16_t next_RIGHT(uint16_t rule, int8_t endDirection = RIGHT){
     return rule+1;
 }
 
-#include "rule_markMemByte.h"
 #include "rule_cpyPCtoMAR.h"
 #include "rule_cpyMARtoPC.h"
 #include "rule_incPC.h"
 #include "rule_setRAMaddress.h"
 #include "rule_cpyINSTtoIR.h"
-#include "rule_cpyMMBArgToPC.h"
 
 #include "rule_reset.h"
 #include "rule_alu.h"
