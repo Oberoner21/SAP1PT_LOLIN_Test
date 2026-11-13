@@ -13,9 +13,9 @@ const uint8_t CLKRAW        = 23;
 const uint8_t MWRITE        = 22;
 const uint8_t MREAD         = 21;
 const uint8_t DIN           = 19;
-const uint8_t GPIO18        = 18;
-const uint8_t GPIO05        = 5;
-const uint8_t GPIO04        = 4;
+const uint8_t D0            = 18;
+const uint8_t D1            = 5;
+const uint8_t OUTCLK        = 4;
 const uint8_t GPIO15        = 15;
 
 const uint8_t GPIO34        = 34; // Input only
@@ -42,9 +42,10 @@ void InitGPIOPins(){
 
     pinMode(DIN, INPUT);
 
-    pinMode(GPIO18, INPUT);
-    pinMode(GPIO05, INPUT);
-    pinMode(GPIO04, INPUT);
+    pinMode(D0, OUTPUT);
+    pinMode(D1, OUTPUT);
+    pinMode(OUTCLK, OUTPUT);
+
     pinMode(GPIO15, INPUT);
 
     pinMode(GPIO34, INPUT);

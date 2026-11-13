@@ -52,6 +52,10 @@ void loop() {
             direction = ruleBook[rule][symbol][dataIn].direction;
             notePadPointer += direction;
 
+            // Set the output data lines
+            digitalWrite(D0, wSymbol & 0x01 ? HIGH : LOW);
+            digitalWrite(D1, wSymbol & 0x02 ? HIGH : LOW);
+
             // Set the control lines
             digitalWrite(SERDATA, ruleBook[rule][symbol][dataIn].serDATA);
             digitalWrite(DATACLK, ruleBook[rule][symbol][dataIn].dataCLK);
@@ -60,6 +64,7 @@ void loop() {
             digitalWrite(ADDR_OUTCLK, ruleBook[rule][symbol][dataIn].addressOUTCLK);
             digitalWrite(MREAD, ruleBook[rule][symbol][dataIn].mRead);
             digitalWrite(MWRITE, ruleBook[rule][symbol][dataIn].mWrite);
+            digitalWrite(OUTCLK, ruleBook[rule][symbol][dataIn].outCLK);
 
             // Clock the external mashine
             digitalWrite(CLKRAW, HIGH);

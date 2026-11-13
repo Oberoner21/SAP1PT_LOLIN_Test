@@ -85,7 +85,7 @@ void GenerateRuleDECODE(uint16_t rule){
     SetRule(rule, '$', '$', LEFT, RULE_LDA); // 0x1 LDA
     rule++;
 
-    SetRule(rule, '$', '$', LEFT, RULE_END); // 0x2 ADD
+    SetRule(rule, '$', '$', LEFT, RULE_ADD); // 0x2 ADD
     rule++;
 
     SetRule(rule, '$', '$', LEFT, RULE_SUB); // 0x3 SUB

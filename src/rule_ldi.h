@@ -106,6 +106,8 @@ void GenerateRuleLDI(uint16_t rule) {
     rule = next_LEFT(rule);
     SetRule(rule-1, '_', '$', RIGHT, rule);
 
+    // ---- End point --
+
     // Skip PC
     rule = next$RIGHT(rule);
     // Skip IR

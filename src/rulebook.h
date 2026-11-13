@@ -197,7 +197,7 @@ void SetRuleDIN(uint16_t rule, uint8_t readSymbol, uint8_t writeSymbol, int8_t d
 }
 
 
-uint16_t Set_RULE_END(uint16_t rule){
+uint16_t BreakEND(uint16_t rule){
 
     SetRule(rule, '0', '0', RIGHT, rule +1);
     SetRule(rule, '1', '1', RIGHT, rule +1);
@@ -276,16 +276,24 @@ uint16_t next_RIGHT(uint16_t rule, int8_t endDirection = RIGHT){
 
 #include "rule_markMemByte.h"
 #include "rule_cpyPCtoMAR.h"
+#include "rule_cpyMARtoPC.h"
 #include "rule_incPC.h"
 #include "rule_setRAMaddress.h"
 #include "rule_cpyINSTtoIR.h"
 #include "rule_cpyMMBArgToPC.h"
 
 #include "rule_reset.h"
+#include "rule_alu.h"
+#include "rule_out.h"
 #include "rule_fetch.h"
 #include "rule_decode.h"
 #include "rule_ldi.h"
 #include "rule_sta.h"
+#include "rule_add.h"
+#include "rule_jc.h"
+#include "rule_lda.h"
+#include "rule_jmp.h"
+
 
 void GenerateRuleBook()
 {
@@ -308,4 +316,10 @@ void GenerateRuleBook()
     GenerateRuleDECODE(RULE_DECODE);
     GenerateRuleLDI(RULE_LDI);
     GenerateRuleSTA(RULE_STA);
+    GenerateRuleADD(RULE_ADD);
+    GenerateRuleALU(RULE_ALU);
+    GenerateRuleJC(RULE_JC);
+    GenerateRuleOUT(RULE_OUT);
+    GenerateRuleLDA(RULE_LDA);
+    GenerateRuleJMP(RULE_JMP);
 }
